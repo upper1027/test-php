@@ -38,6 +38,7 @@ class TestJob extends Job
             if ($this->flag) {
                 throw new Exception('异常');
             }
+            Db::commit();
         } catch (\Throwable $e) {
 //            Db::rollBack();
         }
