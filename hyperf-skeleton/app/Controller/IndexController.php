@@ -24,6 +24,7 @@ class IndexController extends AbstractController
         $driver = $container->get(DriverFactory::class)->get('default');
 
         $driver->push(new TestJob(1));
+        sleep(1);
         $driver->push(new TestJob(0));
 
         return true;

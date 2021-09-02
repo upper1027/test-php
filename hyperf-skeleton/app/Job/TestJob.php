@@ -15,6 +15,7 @@ use Exception;
 use App\Model\User;
 use Hyperf\AsyncQueue\Job;
 use Hyperf\DbConnection\Db;
+use Hyperf\Utils\Coroutine;
 
 class TestJob extends Job
 {
@@ -29,6 +30,7 @@ class TestJob extends Job
     {
         Db::beginTransaction();
         try {
+            var_dump(Coroutine::id());
             $data = ['正常情况', '异常情况'];
             $user = new User();
             $user->user_name = $data[$this->flag];
